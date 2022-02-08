@@ -1,14 +1,14 @@
 <template>
   <view :class="classes" :style="baseStyle" @click="handleClick">
     <slot>
-      <view
-        class="nut-cell__title"
-        :class="{ icon: icon || $slots.icon }"
-        v-if="title || subTitle || icon"
-      >
+      <view class="nut-cell__icon" :class="{ icon: icon || $slots.icon }" v-if="icon">
         <slot v-if="$slots.icon" name="icon"></slot>
         <nut-icon v-else-if="icon" class="icon" :name="icon"></nut-icon>
-
+      </view>
+      <view
+        class="nut-cell__title"
+        v-if="title || subTitle"
+      >
         <template v-if="subTitle">
           <view class="title">{{ title }}</view>
           <view class="nut-cell__title-desc">{{ subTitle }}</view>
